@@ -24,12 +24,17 @@ app.set('view engine', 'handlebars');
 
 //index route
 app.get('/', (req,res)=>{
-  res.render('index')
+  res.render('index');
 });
 
 app.get('/about',(req,res)=>{
-  res.render("about")
-})
+  res.render("about");
+});
+
+//add idea form
+app.get('/ideas/add',(req,res)=>{
+  res.render("ideas/add");
+});
 
 
 const port = 5000;
