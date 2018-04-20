@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/vidjot-dev').then(()=>{
   console.log(err);
 });
 
-//load idea model
+//load idea model.
 require('./models/Idea');
 const Idea = mongoose.model('ideas');
 //handlebars middleware
@@ -47,6 +47,15 @@ app.get('/ideas',(req,res)=>{
 app.get('/ideas/add',(req,res)=>{
   res.render("ideas/add");
 });
+//edit idea form
+app.get('/ideas/edit/:id',(req,res)=>{
+  Idea.findOne({
+    _id:req.params.id
+  }).then(idea=>{
+    res.render("ideas/edit",{ idea });
+  })
+
+})
 
 //process form
 app.post('/ideas',(req,res)=>{
